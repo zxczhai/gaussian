@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="VastGaussian: Vast 3D Gaussians for Large Scene Reconstruction">
+  <meta name="keywords" content="VastGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Gaussian Splatting Page</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">基于3D高斯场景表征的高保真实时渲染方案的设计</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              翟聪<sup></sup>&nbsp;&nbsp;</span>
+            <!-- <span class="author-block">
+              Name<sup>2*</sup>&nbsp;&nbsp;</span>
+            <span class="author-block">
+              Name<sup>2</sup>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              Name<sup>3</sup>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              Name<sup>2</sup>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              Name<sup>1</sup>&nbsp;&nbsp;</span><br />
+            </span>
+            <span class="author-block">
+              Name<sup>2</sup>&nbsp;&nbsp;</span>
+            </span> -->
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f"><sup></sup>宁波工程学院 NBUT&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <!-- <span class="author-block", style="color:#726f6f"><sup>2</sup>CNITECH&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="author-block", style="color:#726f6f"><sup>3</sup>CNITECH</span> -->
+          </div>
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block", style="font-size: 15px;color:#726f6f">xxx@mails.tsinghua.edu.cn&nbsp;&nbsp;</span>
+            <span class="author-block", style="font-size: 15px;color:#726f6f">xxx@mails.tsinghua.edu.cn&nbsp;&nbsp;</span>
+            <span class="author-block", style="font-size: 15px;color:#726f6f">xxx@mails.tsinghua.edu.cn</span>
+          </div> -->
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>*&nbsp;</sup>Equal contribution&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>†&nbsp;</sup>Corresponding author </span>
+          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#367DBD";>成果展示</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+      </div>
+    </div>
+    <img width="100%" src="./static\images\pipeline.png">
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-building">
+          <video poster="" id="building" autoplay controls muted loop height="100%" width="100%">
+            <source src="./static/videos/1.6kwith_depth_loss.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-rubble">
+          <video poster="" id="rubble" autoplay controls muted loop  height="100%" width="100%">
+            <source src="./static/videos/highResolutionBlue.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-campus">
+          <video poster="" id="campus" autoplay controls muted loop  height="100%" width="100%">
+            <source src="./static/videos/lidarPoints.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-sciart">
+          <video poster="" id="sciart" autoplay controls muted loop  height="100%" width="100%">
+            <source src="./static/videos/exhibitiontest1.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-residence">
+          <video poster="" id="residence" autoplay controls muted loop height="100%" width="100%" >
+            <source src="./static/videos/exhibitiontest1.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- 
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Comparison With 3DGS</h2>
+      <img alt="Architecture" src="./static/images/depthGaussianSplats.png" width="100%"/>
+    </div>
+  </div>
+</div>
+</section> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3">深度正则化</h3>
+    <div class="content has-text-justified">
+    <p>
+      从原始点云中获取深度信息并生成深度图，在原始3D高斯中添加深度正则化，我们能约束高斯球的位置，并在一定程度上也能约束到高斯球的大小，使得有更多的高斯椭球来表征整个场景，从而渲染出更多细节。通过深度信息也能去除原始3DGS在空气中生成高斯球，从而去除原始3DGS渲染中的漂浮物。<br> 
+    </p>
+    </div>
+    <div class="columns is-centered">
+
+      <div class="column">
+        <h2 class="title is-6">添加深度正则化前后对比</h2>
+        <div>
+          <img-comparison-slider>
+            <figure slot="first" class="before">
+              <img width="100%" src="./static\images\no_depthGaussianSplats.png">
+            </figure>
+            <figure slot="second" class="after">
+              <img width="100%" src="./static\images\depthGaussianSplats.png">
+          </img-comparison-slider>
+        </div>
+      </div>
+    
+      <!-- <div class="column">
+        <h2 class="title is-6">Real Scene</h2>
+        <div>
+          <img-comparison-slider>
+            <figure slot="first" class="before">
+              <img width="100%" src="./media/semantic_seg/scene_2_rgb.gif">
+            </figure>
+            <figure slot="second" class="after">
+              <img width="100%" src="./media/semantic_seg/scene_2_seg.gif">
+          </img-comparison-slider>
+        </div>
+      </div> -->
+
+    </div>
+
+    <div class="video-compare-container" id="materialsDiv2">
+      <video class="video" id="materials0" loop playsinline autoPlay muted src="./static/videos/depth.mp4" onplay="resizeAndPlay(this)"></video>
+      <canvas height=0 class="videoMerge" id="materials0Merge" style="border-radius: 10px;"></canvas>
+    </div> 
+    <!-- <div class="content has-text-justified">
+      <p>
+        <i>Experience sync issues with the GIFs? Simply refresh the webpage to synchronize playback.</i>
+      </p>
+    </div> -->
+
+    <style>
+      .before,
+      .after {
+        margin: 0;
+      }
+    
+      .before figcaption,
+      .after figcaption {
+        background: #fff;
+        border: 1px solid #c0c0c0;
+        border-radius: 4px;
+        color: #2e3452;
+        opacity: 0.8;
+        padding: 4px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 100%;
+      }
+    
+      .before figcaption {
+        left: 4px;
+      }
+    
+      .after figcaption {
+        right: 4px;
+      }
+    </style>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div> -->
+    </div>
+    <!-- <div class="content has-text-justified">
+      <p>
+        Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed. Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.Existing NeRF-based methods for large scene reconstruction often have limitations in visual quality and rendering speed.
+      </p>
+    </div> -->
+
+    <h3 class="title is-3">多尺度损失融合引入高分辨率影像</h3>
+    <div class="content has-text-justified">
+    <p>
+      在提高数据集影像的分辨率后，训练时占用的显存极具增加，在显卡型号为RTX4080平台无法完成训练。经实验定位后，发现有一部分损失并不需要高分辨率信息，因此我们提出一种多尺度损失融合策略，部分损失使用较低分辨率信息计算，经实验测试后，发现与全部高分辨率信息损失约束所得到的模型渲染质量不相上下。<br> 
+    </p>
+
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="content">
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/white1.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/blue.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/42.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle has-text-centered">
+        Please click the videos for better view.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- <section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Comparison With SOTA</h2>
+      <img alt="Architecture" src="./static/images/table.PNG" width="100%"/>
+    </div>
+  </div>
+</div>
+</section> -->
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index === 1) {
+          this.classList.toggle('expand-right');
+        } else if (index === 3) {
+          this.classList.toggle('expand-left');
+        } else if(index === 2){
+          this.classList.toggle('expanded');
+        }
+      });
+    });
+  });
+</script>
+
+<script
+defer
+src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
+/>
+
+
+</body>
+</html>
